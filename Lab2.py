@@ -35,11 +35,20 @@ def sort_temperature(inputlist):
     print("sort_temperature")
     templist = inputlist.copy()
     templist.sort()
+    print("SORTED = ", templist)
     return templist
 
 
-def calc_media_temperature():
+def calc_media_temperature(inputlist):
     print("calc_median_temperature")
+    templist=sort_temperature(inputlist)
+    listlen = len(templist)
+    if listlen%2==1:  # Odd number of temperature readings
+        median = templist[listlen//2]
+    else:  # Even number of temperature readings
+        median = (templist[listlen//2 - 1] + templist[listlen//2])/2
+    print("Median = ", median)
+
 
 
 def main():
@@ -48,7 +57,7 @@ def main():
     inputlist = get_user_input()
     calc_average(inputlist)
     find_min_max(inputlist)
-
+    calc_media_temperature(inputlist)
 
 
 if __name__ == "__main__":
